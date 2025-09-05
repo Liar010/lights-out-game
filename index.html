@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ライツアウト - 脳トレパズルゲーム</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>LIGHTS OUT</h1>
+            <p class="subtitle">全てのライトを消そう！</p>
+        </header>
+
+        <div class="game-info">
+            <div class="info-item">
+                <span class="label">レベル:</span>
+                <span id="level">1</span>
+            </div>
+            <div class="info-item">
+                <span class="label">手数:</span>
+                <span id="moves">0</span>
+            </div>
+            <div class="info-item">
+                <span class="label">タイム:</span>
+                <span id="timer">00:00</span>
+            </div>
+        </div>
+
+        <div class="game-controls">
+            <select id="gridSize" class="control-btn">
+                <option value="3">3×3 (簡単)</option>
+                <option value="5" selected>5×5 (標準)</option>
+                <option value="7">7×7 (難しい)</option>
+            </select>
+            <button id="newGame" class="control-btn primary">新しいゲーム</button>
+            <button id="reset" class="control-btn">リセット</button>
+        </div>
+
+        <div id="gameBoard" class="game-board"></div>
+
+        <div class="mode-selector">
+            <button class="mode-btn active" data-mode="classic">クラシック</button>
+            <button class="mode-btn" data-mode="timeAttack">タイムアタック</button>
+            <button class="mode-btn" data-mode="perfect">パーフェクト</button>
+        </div>
+
+        <div class="mode-description">
+            <p id="modeDesc">通常モード：自分のペースでパズルを解く</p>
+        </div>
+
+        <div class="best-records">
+            <h3>自己ベスト</h3>
+            <div id="bestRecordsContent" class="best-records-content">
+                <div class="best-record-empty">まだ記録がありません</div>
+            </div>
+        </div>
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <h2 id="modalTitle">クリア！</h2>
+                <p id="modalMessage"></p>
+                <button id="modalClose" class="control-btn primary">閉じる</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
