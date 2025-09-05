@@ -4,7 +4,6 @@ class LightsOutGame {
         this.board = [];
         this.initialBoard = [];
         this.moves = 0;
-        this.level = 1;
         this.timer = 0;
         this.timerInterval = null;
         this.gameMode = 'classic';
@@ -131,14 +130,13 @@ class LightsOutGame {
 
     handleWin() {
         this.stopTimer();
-        this.level++;
         
         const currentTime = this.gameMode === 'timeAttack' ? 300 - this.timer : this.timer;
         
         this.saveBestRecord(currentTime);
         this.updateBestRecords();
         
-        const message = `レベル ${this.level - 1} クリア！\n手数: ${this.moves}\nタイム: ${this.formatTime(currentTime)}`;
+        const message = `クリア！\n手数: ${this.moves}\nタイム: ${this.formatTime(currentTime)}`;
         this.showModal('クリア！', message);
         
         setTimeout(() => {
@@ -281,8 +279,6 @@ class LightsOutGame {
     }
 
     updateDisplay() {
-        document.getElementById('level').textContent = this.level;
-        
         if (this.gameMode === 'perfect') {
             const remainingMoves = this.getMinMoves() - this.moves;
             document.getElementById('moves').textContent = `${this.moves} (残${Math.max(0, remainingMoves)})`;
